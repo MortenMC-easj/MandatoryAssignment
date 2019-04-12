@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_create_order"
+        android:icon="@drawable/lock_mandatory_app_white"
+        android:orderInCategory="1"
+        android:title="Create order"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_share"
+        android:orderInCategory="2"
+        android:title="Share"
+        app:actionProviderClass="android.support.v7.widget.ShareActionProvider"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_nothing_really"
+        android:icon="@android:drawable/btn_dialog"
+        android:orderInCategory="3"
+        android:title="Dialog"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_absolutely_nothing"
+        android:icon="@android:drawable/ic_menu_save"
+        android:orderInCategory="4"
+        android:title="Save"
+        app:showAsAction="ifRoom" />
+
+</menu>

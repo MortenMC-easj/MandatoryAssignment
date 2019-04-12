@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".REST.AddDataActivity">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_main" />
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add data" />
+
+    <EditText
+        android:id="@+id/add_data_deviceId_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="DeviceId"
+        android:inputType="numberDecimal" />
+
+    <EditText
+        android:id="@+id/add_data_pm25_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="pm25"
+        android:inputType="numberDecimal" />
+
+    <EditText
+        android:id="@+id/add_data_pm10_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="pm10"
+        android:inputType="numberDecimal" />
+
+    <EditText
+        android:id="@+id/add_data_co2_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="co2"
+        android:inputType="numberDecimal" />
+
+    <EditText
+        android:id="@+id/add_data_o3_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="o3"
+        android:inputType="numberDecimal" />
+
+    <EditText
+        android:id="@+id/add_data_pressure_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Pressure"
+        android:inputType="numberDecimal" />
+
+    <EditText
+        android:id="@+id/add_data_temperature_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Temperature"
+        android:inputType="numberDecimal" />
+
+    <EditText
+        android:id="@+id/add_data_humidity_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Humidity"
+        android:inputType="numberDecimal" />
+
+    <EditText
+        android:id="@+id/add_data_userId_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="UserId"
+        android:inputType="textCapWords" />
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="addData2"
+        android:text="Add" />
+
+    <TextView
+        android:id="@+id/add_data_message_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".REST.DataActivity">
+
+    <TextView
+        android:id="@+id/data_heading_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:labelFor="@id/data_deviceId_edittext"
+                android:text="DeviceId" />
+
+            <EditText
+                android:id="@+id/data_deviceId_edittext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="DeviceId"
+                android:inputType="textCapWords" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:labelFor="@+id/data_pm25_edittext"
+                android:text="pm25" />
+
+            <EditText
+                android:id="@+id/data_pm25_edittext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="pm25"
+                android:inputType="textCapWords" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:labelFor="@id/data_pm10_edittext"
+                android:text="pm10" />
+
+            <EditText
+                android:id="@+id/data_pm10_edittext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="pm10"
+                android:inputType="textCapWords" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:labelFor="@+id/data_co2_edittext"
+                android:text="co2" />
+
+            <EditText
+                android:id="@+id/data_co2_edittext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="co2"
+                android:inputType="numberDecimal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:labelFor="@+id/data_o3_edittext"
+                android:text="o3" />
+
+            <EditText
+                android:id="@+id/data_o3_edittext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="o3"
+                android:inputType="numberDecimal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:labelFor="@+id/data_pressure_edittext"
+                android:text="Pressure" />
+
+            <EditText
+                android:id="@+id/data_pressure_edittext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Pressure"
+                android:inputType="numberDecimal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:labelFor="@+id/data_temperature_edittext"
+                android:text="Temperature" />
+
+            <EditText
+                android:id="@+id/data_temperature_edittext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Temperature"
+                android:inputType="numberDecimal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:labelFor="@+id/data_humidity_edittext"
+                android:text="Humidity" />
+
+            <EditText
+                android:id="@+id/data_humidity_edittext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Humidity"
+                android:inputType="numberDecimal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:labelFor="@+id/data_userId_edittext"
+                android:text="UserId" />
+
+            <EditText
+                android:id="@+id/data_userId_edittext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="UserId"
+                android:inputType="textCapWords" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="updateData"
+                android:text="Update" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="deleteData"
+                android:text="Delete" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="back"
+                android:text="Back" />
+
+            <TextView
+                android:id="@+id/data_message_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
