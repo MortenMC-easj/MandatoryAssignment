@@ -31,7 +31,7 @@
         </activity>
 
         <activity android:name=".REST.DataActivity"/>
-        <activity android:name=".RestToRest.WristBandData"/>
+        <activity android:name=".RestToRest.ConsumeWristbandData"/>
 
 
     </application>
