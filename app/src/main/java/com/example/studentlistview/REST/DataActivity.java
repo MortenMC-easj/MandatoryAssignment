@@ -60,7 +60,7 @@ public class DataActivity extends AppCompatActivity {
 
     public void deleteData(View view) {
         DeleteTask task = new DeleteTask();
-        task.execute("https://berthabackendrestprovider.azurewebsites.net/api/data/cramer" + data.getUserId());
+        task.execute("https://berthabackendrestprovider.azurewebsites.net/api/data/cramer/" + data.getDeviceId());
         finish();
     }
 
