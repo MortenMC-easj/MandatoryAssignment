@@ -5,15 +5,63 @@
     android:orientation="horizontal">
 
     <TextView
+        android:id="@+id/datalist_item_userId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="italic" />
+
+    <TextView
         android:id="@+id/datalist_item_deviceId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/datalist_item_userId"
+        android:id="@+id/datalist_item_pm25"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textStyle="italic" />
+
+    <TextView
+        android:id="@+id/datalist_item_pm10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="italic" />
+
+    <TextView
+        android:id="@+id/datalist_item_co2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="italic" />
+
+    <TextView
+        android:id="@+id/datalist_item_o3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="italic" />
+
+    <TextView
+        android:id="@+id/datalist_item_pressure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="italic" />
+
+    <TextView
+        android:id="@+id/datalist_item_temperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="italic" />
+
+    <TextView
+        android:id="@+id/datalist_item_humidity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="italic" />
+
+
+
+
+
+
 
 </LinearLayout>
