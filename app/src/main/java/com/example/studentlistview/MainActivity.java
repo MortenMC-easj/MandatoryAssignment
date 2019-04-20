@@ -22,6 +22,7 @@ import com.example.studentlistview.REST.AddDataActivity;
 import com.example.studentlistview.REST.Data;
 import com.example.studentlistview.REST.DataActivity;
 import com.example.studentlistview.REST.DataListenItemAdapter;
+import com.example.studentlistview.REST.PostHttpTask;
 import com.example.studentlistview.REST.ReadHttpTask;
 import com.example.studentlistview.AppBar.AppBarActivity;
 import com.google.gson.Gson;
@@ -64,16 +65,37 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
+
+        // 1. Fetch data from public api (using cramer) - form url/endpoint #1
         Timer timer = new Timer();
         timer.schedule(new TimerTask()
         {
             @Override
             public void run()
             {
-                ReadTask task = new ReadTask();
+                ReadDatabaseApiTask task = new ReadDatabaseApiTask();
                 task.execute("https://berthabackendrestprovider.azurewebsites.net/api/data/cramer");
             }
-        }, 0, 5000);
+        }, 0, 3000);
+
+
+
+        Timer timer2 = new Timer();
+        timer2.schedule(new TimerTask()
+        {
+            @Override
+            public void run()
+            {
+                // The wristbandDataTask does all these 3 things:
+                // -------------------------
+                // 2.1 Fetch single dynamic (auto-generated) wristband data - from url/endpoint #2
+                // 2.2 Append "userid"
+                // 2.3 Post to Database API
+                ReadWristbandApiTask wristbandDataTask = new ReadWristbandApiTask();
+                wristbandDataTask.execute("https://berthawristbandrestprovider.azurewebsites.net/api/wristbanddata");
+            }
+        }, 0, 7000);
+
 
     }
 
@@ -82,34 +104,24 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private class ReadTask extends ReadHttpTask {
+    /*
+     * CLASS FOR CONSUMING DATABASE API
+     */
+    private class ReadDatabaseApiTask extends ReadHttpTask {
         @Override
         protected void onPostExecute(CharSequence jsonString) {
-        /*
-            final List<Data> data = new ArrayList<>();
-            try {
-                JSONArray array = new JSONArray(jsonString.toString());
-                for (int i = 0; i < array.length(); i++) {
-                    JSONObject obj = array.getJSONObject(i);
-                    int deviceId = obj.getInt("DeviceId");
-                    Double pm25 = obj.getDouble("pm25");
-                    Double pm10 = obj.getDouble("pm10");
-                    int co2 = obj.getInt("co2");
-                    int o3 = obj.getInt("o3");
-                    Double pressure = obj.getDouble("pressure");
-                    Double temperature = obj.getDouble("temperature");
-                    Double humidity = obj.getDouble("humidity");
-                    Data data = new Data(deviceId, pm25, pm10, co2, o3, pressure, temperature, humidity);
-                    data.add(data);
-                }
-                */
+
+            // 1. Fetch data
             Gson gson = new GsonBuilder().create();
             final Data[] data = gson.fromJson(jsonString.toString(), Data[].class);
 
+            // 2. Add data to Listview:
             ListView listView = findViewById(R.id.main_data_listview);
             //ArrayAdapter<Data> adapter = new ArrayAdapter<>(getBaseContext(), android.R.layout.simple_list_item_1, data);
             DataListenItemAdapter adapter = new DataListenItemAdapter(getBaseContext(), R.layout.datalist_item, data);
             listView.setAdapter(adapter);
+
+            // 3. Add event handler (to inserted object/item)
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -136,6 +148,51 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    /*
+     * CLASS FOR CONSUMING WRISTBAND API
+     */
+    private class ReadWristbandApiTask extends ReadHttpTask {
+
+        // Hook triggered/called just BEFORE we get the content from the URL
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        // Hook triggered/called AFTER we got the response:
+        @Override
+        protected void onPostExecute(CharSequence jsonString) {
+
+            // 1. Fetch and parse "auto-generated" json object from wristband api:
+            Gson gson = new GsonBuilder().create();
+            final Data data = gson.fromJson(jsonString.toString(), Data.class);
+
+            // 2. Append additional data ("userId"):
+            data.setUserId("cramer");
+
+            // 3. Post "data" to Database API:
+            PostHttpTask post = new PostHttpTask();
+            String dataAsJsonString = gson.toJson(data);
+            post.execute("https://berthabackendrestprovider.azurewebsites.net/api/data", dataAsJsonString);
+
+            // ...
+
+
+        }
+
+        @Override
+        protected void onCancelled(CharSequence message) {
+            TextView messageTextView = findViewById(R.id.main_message_textview);
+            messageTextView.setText(message);
+            Log.e("DATA", message.toString());
+        }
+
+
+    }
+
+
+
 
     //APPBAR________________________
 
