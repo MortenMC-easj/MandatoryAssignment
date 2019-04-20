@@ -29,6 +29,8 @@ import com.google.gson.GsonBuilder;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -61,8 +63,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        ReadTask task = new ReadTask();
-        task.execute("https://berthabackendrestprovider.azurewebsites.net/api/data/cramer");
+
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask()
+        {
+            @Override
+            public void run()
+            {
+                ReadTask task = new ReadTask();
+                task.execute("https://berthabackendrestprovider.azurewebsites.net/api/data/cramer");
+            }
+        }, 0, 5000);
+
     }
 
     public void addData(View view) {

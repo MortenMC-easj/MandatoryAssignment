@@ -40,7 +40,7 @@
             android:layout_height="wrap_content" />
 
 
-        //WristbandData_________
+        <!-- WristbandData_________ -->
 
         <TextView
             android:id="@+id/mainResultTextView"
@@ -53,7 +53,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        //WristbandData_________
+        <!-- WristbandData_________ -->
+
 
 
 
